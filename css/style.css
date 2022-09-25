@@ -1,0 +1,246 @@
+:root {
+    /* Primary */
+    --bright-blue: hsl(220, 98%, 61%);
+    --check-background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+    /* Light Theme */
+    --very-light-gray: hsl(0, 0%, 98%);
+    --very-light-grayish-blue: hsl(236, 33%, 92%);
+    --light-grayish-blue: hsl(233, 11%, 84%);
+    --dark-grayish-blue: hsl(236, 9%, 61%);
+    --very-dark-grayish-blue: hsl(235, 19%, 35%);
+
+    /* Dark Theme */
+    --very-dark-blue: hsl(235, 21%, 11%);
+    --very-dark-dasatured-blue: hsl(235, 24%, 19%);
+    --light-grayish-blue-darktheme: hsl(234, 39%, 85%);
+    --light-grayish-blue-hover: hsl(236, 33%, 92%);
+    --dark-grayish-blue-darktheme: hsl(234, 11%, 52%);
+    --very-dark-grayish-blue-darktheme: hsl(233, 14%, 35%);
+    --very-dark-grayish-blue-darktheme2: hsl(237, 14%, 26%);
+
+    /* Font */
+    --size: 18px;
+    --family: 'Josefin Sans', sans-serif;
+}
+
+.dark-theme {
+    --bg-top-image: 0 0 url(../assets/img/bg-desktop-dark.jpg) no-repeat;
+    --main-bg: hsl(235, 21%, 11%);
+    --todo-bg: hsl(235, 24%, 19%);
+    --todo-shadow: hsl(235, 21%, 11%);
+    --font-color: hsl(234, 39%, 85%);
+    --font-color-hover: #fff;
+}
+
+.light-theme {
+    --bg-top-image: 0 0 url(../assets/img/bg-desktop-light.jpg) no-repeat;
+    --main-bg: hsl(0, 0%, 98%);
+    --todo-bg: hsl(0, 0%, 98%);
+    --todo-shadow: hsl(235, 19%, 35%);
+    --font-color: hsl(236, 9%, 61%);
+    --font-color-hover: #fff;
+}
+
+body {
+    background: var(--bg-top-image);
+    background-color: var(--main-bg);
+    background-size: 100%;
+    color: var(--font-color);
+    font-family: var(--family);
+    font-size: var(--size);
+    font-weight: 400;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 6rem auto 0 auto;
+    max-width: 550px;
+}
+
+main {
+    margin: 3rem auto;
+    max-width: 550px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: .5rem;
+}
+
+.theme-block #theme {
+    display: none;
+}
+
+.theme-block #theme+label::before {
+    background: url(../assets/img/icon-sun.svg);
+    content: '';
+    cursor: pointer;
+    display: block;
+    height: 26px;
+    width: 26px;
+}
+
+.theme-block #theme:checked+label::before {
+    background: url(../assets/img/icon-moon.svg);
+}
+
+.add-new-item {
+    align-items: center;
+    background: var(--todo-bg);
+    border-radius: 5px;
+    display: flex;
+    height: 64px;
+    margin: 0 0 15px;
+    padding: 0 30px;
+}
+
+.add-new-item #addItem {
+    background: transparent;
+    border: none;
+    color: var(--font-color);
+    font-family: var(--family);
+    font-size: var(--size);
+    font-weight: 400;
+    height: 50px;
+    outline: none;
+    padding-left: 10px;
+    width: 80%;
+}
+
+.add-new-item span {
+    border: 1px solid var(--font-color);
+    border-radius: 50px;
+    display: block;
+    height: 24px;
+    width: 24px;
+}
+
+.content {
+    background: var(--todo-bg);
+    border-radius: 5px;
+    box-shadow: 0 5px 25px -12px var(--very-dark-blue);
+}
+
+
+ul li {
+    align-items: center;
+    border-bottom: 1px solid var(--font-color);
+    display: flex;
+    min-height: 65px;
+    padding-left: 30px;
+    position: relative;
+}
+
+ul li input[type="checkbox"] {
+    cursor: pointer;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    width: 0;
+}
+
+ul li label {
+    cursor: pointer;
+    padding-left: 40px;
+    position: relative;
+}
+
+.checkmark {
+    height: 24px;
+    left: 0;
+    position: absolute;
+    top: -5px;
+    width: 24px;
+}
+
+ul li.hidden {
+    display: none;
+}
+
+ul li input[type="checkbox"]~.checkmark {
+    border: 1px solid var(--font-color);
+    border-radius: 50px;
+}
+
+ul li input[type="checkbox"]~.checkmark:hover {
+    background: var(--check-background);
+    border: 0;
+    padding: 1px;
+}
+
+ul li input[type="checkbox"]~.checkmark:hover::before {
+    background: var(--todo-bg);
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 24px;
+    width: 24px;
+}
+
+ul li input[type="checkbox"]:checked~.checkmark {
+    background: center url(../assets/img/icon-check.svg) no-repeat, var(--check-background);
+}
+
+
+ul li input[type="checkbox"]:checked~.text {
+    color: var(--dark-grayish-blue-darktheme);
+    text-decoration: line-through;
+}
+
+.remove {
+    background: url(../assets/img/icon-cross.svg) no-repeat;
+    cursor: pointer;
+    display: none;
+    height: 18px;
+    position: absolute;
+    right: 20px;
+    top: 22px;
+    width: 18px;
+}
+
+ul li:hover .remove {
+    display: block;
+}
+
+.bottom-items {
+    align-items: center;
+    display: flex;
+    font-size: 1rem;
+    height: 65px;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.filter input[type="radio"] {
+    cursor: pointer;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    width: 0;
+}
+
+.filter label {
+    cursor: pointer;
+    padding: 0 3px;
+}
+
+.filter label:hover {
+    color: #fff;
+}
+
+.filter input[type="radio"]:checked~span {
+    color: var(--bright-blue);
+}
+
+.clear {
+    color: var(--font-color);
+    cursor: pointer;
+}
+
+.clear:hover {
+    color: #fff;
+}
